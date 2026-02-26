@@ -1,0 +1,64 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Orbitron", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+}
+
+body {
+  @apply bg-[#0b0b0b] text-zinc-100 font-sans antialiased overflow-x-hidden;
+  background-image: 
+    radial-gradient(circle at 20% 20%, rgba(255, 0, 0, 0.05) 0%, transparent 40%),
+    radial-gradient(circle at 80% 80%, rgba(255, 0, 0, 0.05) 0%, transparent 40%);
+}
+
+.rog-border {
+  position: relative;
+  background: linear-gradient(90deg, #ff0000, #990000);
+  padding: 1px;
+  clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
+}
+
+.rog-container {
+  background: #151515;
+  clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
+}
+
+.rog-cell {
+  clip-path: polygon(4px 0, 100% 0, 100% calc(100% - 4px), calc(100% - 4px) 100%, 0 100%, 0 4px);
+}
+
+.glow-red {
+  box-shadow: 0 0 15px rgba(255, 0, 0, 0.3);
+}
+
+.text-glow-red {
+  text-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+}
+
+@keyframes scanline {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100%); }
+}
+
+.scanline::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: rgba(255, 0, 0, 0.1);
+  animation: scanline 4s linear infinite;
+  pointer-events: none;
+}
+
+.minesweeper-grid {
+  display: grid;
+  user-select: none;
+}
+
+.cell {
+  aspect-ratio: 1 / 1;
+}
